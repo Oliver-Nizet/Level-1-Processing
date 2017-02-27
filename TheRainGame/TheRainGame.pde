@@ -10,10 +10,12 @@ void draw(){
  strokeWeight(3);
  stroke(255);
  ellipse(dropX,dropY,50,50);
- dropY += 13;
+ dropY += 10;
  fill(125);
- noStroke();
+ stroke(0);
+ strokeWeight(1);
  rect(mouseX-35,700,70,70);
+ rect(mouseX-45,700,90,10);
  if(dropY > 700 ){
  checkCatch();
  dropY = 0;
