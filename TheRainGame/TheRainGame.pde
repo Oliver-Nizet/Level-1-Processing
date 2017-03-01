@@ -10,7 +10,7 @@ void draw(){
  strokeWeight(3);
  stroke(255);
  ellipse(dropX,dropY,50,50);
- dropY += 10;
+ dropY += score+5;
  fill(125);
  stroke(0);
  strokeWeight(1);
@@ -20,6 +20,9 @@ void draw(){
  checkCatch();
  dropY = 0;
  dropX = (int) random(width-width,width);
+ if(score>14){
+  text("You Win!",400,500);   
+ }
  }
  textSize(50);
  text("Score: " +score,770,50);
@@ -28,5 +31,5 @@ void checkCatch(){
   if (dropX > mouseX - 35 && dropX < mouseX + 35)
      score++;
   else if (score > 0)
-     score = 0;
+     score--;
 }
