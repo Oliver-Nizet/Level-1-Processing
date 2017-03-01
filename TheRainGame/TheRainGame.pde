@@ -12,15 +12,6 @@ void draw(){
  strokeWeight(3);
  stroke(255);
  ellipse(dropX,dropY,50,50);
- image(cloud,10,5,100,70);
- image(cloud,120,5,100,70);
- image(cloud,230,5,100,70);
- image(cloud,340,5,100,70);
- image(cloud,450,5,100,70);
- image(cloud,560,5,100,70);
- image(cloud,670,5,100,70);
- image(cloud,780,5,100,70);
- image(cloud,890,5,100,70);
  if(score<15){
  dropY += score+5;
  } else {
@@ -47,6 +38,15 @@ void draw(){
  text("Score: " +score,770,130);
  textSize(30);
  text("Get a score of 15 to win! - Created by Oliver Nizet", 10, 110);
+ image(cloud,10,5,100,70);
+ image(cloud,120,5,100,70);
+ image(cloud,230,5,100,70);
+ image(cloud,340,5,100,70);
+ image(cloud,450,5,100,70);
+ image(cloud,560,5,100,70);
+ image(cloud,670,5,100,70);
+ image(cloud,780,5,100,70);
+ image(cloud,890,5,100,70);
 }
 void checkCatch(){
   if (dropX > mouseX - 35 && dropX < mouseX + 35)
