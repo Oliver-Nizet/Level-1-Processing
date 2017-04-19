@@ -9,54 +9,56 @@ float maxGridX = 500;
 float maxGridY = 500;
 float gridLines = 25;
 void setup() {
- size(500,500); 
- midX = width/2;
- midY = height/2;
- currentX = midX;
- currentY = midY;
- speed = 12.5;
+  size(500, 500); 
+  midX = width/2;
+  midY = height/2;
+  currentX = 0;
+  currentY = 0;
+  speed = 12.5;
 }
-void draw(){
+void draw() {
   checkBoundries();
   background(50);
   drawGrid();
-  fill(random(0,255),random(0,255),random(0,255));
-  ellipse(midX,midY,50,50);
+  fill(random(0, 255), random(0, 255), random(0, 255));
+  ellipse(midX, midY, 50, 50);
   println(currentX + ", " + currentY);
 }
-void keyPressed(){
-  if(keyCode == UP){
-  currentY += speed;
+void keyPressed() {
+  if (keyCode == UP) {
+    currentY -= speed;
   }
-  if(keyCode == DOWN){
-  currentY -= speed;
+  if (keyCode == DOWN) {
+    currentY += speed;
   }
-  if(keyCode == LEFT){
-  currentX += speed; 
+  if (keyCode == LEFT) {
+    currentX -= speed;
   }
-  if(keyCode == RIGHT){
-  currentX -= speed;
-  }
-}
-void drawGrid(){
-  for(float x = minGridX; x <= maxGridX; x += gridLines){
-  line(x+currentX,minGridY+currentY,x+currentX,maxGridY+currentY);
-  }
-  for(float y = minGridY; y <= maxGridY; y += gridLines){
-  line(minGridX+currentX,y+currentY,maxGridX+currentX,y+currentY);
+  if (keyCode == RIGHT) {
+    currentX += speed;
   }
 }
-void checkBoundries(){
-  if(currentX < minGridX){
-    currentX = midX;
+void drawGrid() {
+  for (float x = minGridX; x <= maxGridX; x += gridLines) {
+//    line(x-currentX, minGridY-currentY, x-currentX, maxGridY-currentY);
+    line(x, minGridY, x, maxGridY);
   }
-  if(currentX > maxGridX){
-    currentX = midX;
+  for (float y = minGridY; y <= maxGridY; y += gridLines) {
+//    line(minGridX-currentX, y-currentY, maxGridX-currentX, y-currentY);
+    line(minGridX, y, maxGridX, y);
   }
-  if(currentY < minGridY){
-    currentY = midY;
+}
+void checkBoundries() {
+  if (currentX < minGridX) {
+    currentX = minGridX;
   }
-  if(currentY > maxGridY){
-    currentY = midY;
-  }  
+  if (currentX > maxGridX) {
+    currentX = maxGridX;
+  }
+  if (currentY < minGridY) {
+    currentY = minGridY;
+  }
+  if (currentY > maxGridY) {
+    currentY = maxGridY;
+  }
 }
