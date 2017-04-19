@@ -39,13 +39,15 @@ void keyPressed() {
   }
 }
 void drawGrid() {
+  float shiftX = currentX -midX;
+  float shiftY = currentY -midY;
   for (float x = minGridX; x <= maxGridX; x += gridLines) {
-//    line(x-currentX, minGridY-currentY, x-currentX, maxGridY-currentY);
-    line(x, minGridY, x, maxGridY);
+    line(x+shiftX, minGridY+shiftY, x+shiftX, maxGridY+shiftY);
+//    line(x, minGridY, x, maxGridY);
   }
   for (float y = minGridY; y <= maxGridY; y += gridLines) {
-//    line(minGridX-currentX, y-currentY, maxGridX-currentX, y-currentY);
-    line(minGridX, y, maxGridX, y);
+    line(minGridX-shiftX, y-shiftY, maxGridX-shiftX, y-shiftY);
+//    line(minGridX, y, maxGridX, y);
   }
 }
 void checkBoundries() {
