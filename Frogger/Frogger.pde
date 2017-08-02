@@ -1,21 +1,29 @@
 int frogX = 200;
-float frogY = 372.5;
-int frogMove = 35;
+float frogY = 400;
+int frogMove = 60;
 int frogSize = 30;
-int carSpace = 70;
+int carSpace = 60;
 Car[] cars = new Car[5];
+Config config = new Config();
 void setup () {
   size(400, 400);
-  int startCar = 40;
-  cars[0] = new Car(0, startCar, 150, 4);
+  int startCar = 70;
+  config.setCarX(new int[]{400,0,0,0,0});
+  config.setCarY(new int[]{70,130,190,250,310});
+  config.setCarSize(new int[]{3600,400,400,400,400});
+  config.setCarSpeed(new int []{14,7,7,7,7});
+  for(int i = 0; i<5; i++){
+    cars[i] = new Car(config.getCarX(i), config.getCarY(i), config.getCarSize(i), config.getCarSpeed(i));   
+  }
+  /*cars[0] = new Car(400, startCar, 3600, 14);
   startCar += carSpace;
-  cars[1] = new Car(0, startCar, 150, 1);
+  cars[1] = new Car(0, startCar, 400, 7);
   startCar += carSpace;
-  cars[2] = new Car(0, startCar, 150, 3);
+  cars[2] = new Car(0, startCar, 400, 7);
   startCar += carSpace;
-  cars[3] = new Car(0, startCar, 150, 5);
+  cars[3] = new Car(0, startCar, 400, 7);
   startCar += carSpace;
-  cars[4] = new Car(00, startCar, 150, 2);
+  cars[4] = new Car(0, startCar, 400, 7);*/
 }
 
 void draw() {
@@ -55,11 +63,11 @@ void checkBounds() {
   if (frogY < frogSize/2) {
     frogY = frogSize/2;
   }  
-  if (frogX > width-frogSize/2) {
-    frogX = width-frogSize/2;
+  if (frogX > width-frogSize/2-10) {
+    frogX = width-frogSize/2-10;
   }  
-  if (frogX < frogSize/2) {
-    frogX = frogSize/2;
+  if (frogX < frogSize/2+10) {
+    frogX = frogSize/2+10;
   }
 }
 
@@ -92,4 +100,38 @@ class Car {
       carX = - carSize;
     }
   }
+  void getX() {
+  }
+  void getY() {
+  }
+  void getSize() {
+  }
 }
+class Config {
+  int[] x, y, size, speed;
+  void setCarX(int[] values) {
+    x=values;
+  }
+  void setCarY(int[] values) {
+    y=values;
+  }
+  void setCarSize(int[] values) {
+    size=values;
+  }
+  void setCarSpeed(int[] values) {
+    speed=values;
+  }
+  int getCarX(int carNum) {
+    return x[carNum];
+  }
+  int getCarY(int carNum) {
+    return y[carNum];
+  }
+  int getCarSize(int carNum) {
+    return size[carNum];
+  }
+  int getCarSpeed(int carNum) {
+    return speed[carNum];
+  }
+}
+
