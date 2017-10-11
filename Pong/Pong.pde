@@ -10,7 +10,7 @@ void setup(){
   strokeWeight(5);
   stroke(0,255,0);
   ellipse(ballX,height/2,50,50);
-  speed+=0.02;
+  speed+=0.01;
   if(lr == true){
     ballX-=speed;  
   }
